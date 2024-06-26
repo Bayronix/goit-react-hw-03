@@ -1,0 +1,51 @@
+.form-class {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.field-class-name,
+.field-class-number {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field-class-name:focus,
+.field-class-number:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.button-class-add {
+  padding: 10px 20px;
+  margin-top: 25px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-class-add:hover {
+  background-color: #0056b3;
+}
