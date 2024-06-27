@@ -2,11 +2,12 @@ import PropTypes from "prop-types";
 import styles from "./Contact.module.css";
 
 const Contact = ({ name, number, onDelete }) => {
+  console.log("Contact", name, number); // Debugging line
   return (
-    <li className={styles["contact-item"]}>
-      <span className={styles["contact-name"]}>{name}</span>:
-      <span className={styles["contact-number"]}>{number}</span>
-      <button onClick={onDelete} className={styles["delete-button"]}>
+    <li className={styles.list}>
+      <span className={styles.name}>{name}</span>:
+      <span className={styles.number}>{number}</span>
+      <button onClick={onDelete} className={styles.button}>
         Delete
       </button>
     </li>

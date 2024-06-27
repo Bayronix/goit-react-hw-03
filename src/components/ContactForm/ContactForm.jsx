@@ -4,19 +4,16 @@ import * as Yup from "yup";
 import styles from "./ContactForm.module.css";
 import { useId } from "react";
 
-const FeedbackSchema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
   name: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
+    .min(3, "Too short")
+    .max(50, "Too long")
     .required("Required"),
-
   number: Yup.string()
-    .matches(/^[0-9+-]+$/, "Must be a valid number")
-    .min(10, "Too short")
-    .max(15, "Too long")
+    .min(3, "Too short")
+    .max(50, "Too long")
     .required("Required"),
 });
-
 const ContactForm = ({ onAddContact }) => {
   const id = useId();
 
@@ -32,28 +29,24 @@ const ContactForm = ({ onAddContact }) => {
         name: "",
         number: "",
       }}
-      validationSchema={FeedbackSchema}
       onSubmit={handleSubmit}
+      validationSchema={validationSchema}
     >
       {() => (
-        <Form className={styles["form-class"]}>
+        <Form className={styles.form}>
           <h3>Name</h3>
-          <Field className={styles["field-class"]} type="text" name="name" />
-          <ErrorMessage
-            name="name"
-            component="div"
-            className={styles["error-message"]}
-          />
+          <Field className={styles.field} type="text" name="name" />
+          <ErrorMessage name="name" component="div" className={styles.error} />
 
           <h3>Phone Number</h3>
-          <Field className={styles["field-class"]} type="text" name="number" />
+          <Field className={styles.field} type="text" name="number" />
           <ErrorMessage
             name="number"
             component="div"
-            className={styles["error-message"]}
+            className={styles.error}
           />
 
-          <button className={styles["button-class-add"]} type="submit">
+          <button className={styles.button} type="submit">
             Add Contact
           </button>
         </Form>

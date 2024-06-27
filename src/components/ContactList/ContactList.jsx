@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import styles from "./ContactList.module.css";
-import Contact from "../Сontact/Contact";
+import Contact from "../Contact/Contact";
 
 const ContactList = ({ contacts, onDeleteContact }) => {
+  console.log("ContactList", contacts); // Debugging line
   return (
-    <div className={styles["contact-container"]}>
-      <ul className={styles["contact-list"]}>
+    <div className={styles.contact}>
+      <ul className={styles.list}>
         {contacts.map(({ name, number }, index) => (
           <Contact
             key={index}

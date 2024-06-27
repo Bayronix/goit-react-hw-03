@@ -1,9 +1,9 @@
+import { useState, useEffect } from "react";
 import SearchBox from "./SearchBox/SearchBox";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
-import { useState, useEffect } from "react";
 import InitialContacts from "./ContactList/ContactList.json";
-// cat
+
 function App() {
   const [contacts, setContacts] = useState(() => {
     const savedContacts = localStorage.getItem("contacts");
@@ -38,7 +38,10 @@ function App() {
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAddContact={handleAddContact} />
-      <SearchBox onSearchContact={handleSearchContact} />
+      <SearchBox
+        searchQuery={searchQuery}
+        onSearchContact={handleSearchContact}
+      />
       <ContactList
         contacts={filteredContacts}
         onDeleteContact={handleDeleteContact}

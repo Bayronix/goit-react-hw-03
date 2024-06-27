@@ -1,24 +1,22 @@
-import { Formik, Form, Field } from "formik";
 import PropTypes from "prop-types";
 import styles from "./SearchBox.module.css";
 
-const SearchBox = ({ onSearchContact }) => {
+const SearchBox = ({ searchQuery, onSearchContact }) => {
   return (
-    <Formik initialValues={{}} onSubmit={() => {}}>
-      <Form className={styles["form-class"]}>
-        <h3>Find contacts by name</h3>
-        <Field
-          className={styles["field-class-name"]}
-          type="text"
-          name="username"
-          onChange={onSearchContact}
-        />
-      </Form>
-    </Formik>
+    <div className={styles.form}>
+      <h3>Find contacts by name</h3>
+      <input
+        className={styles.field}
+        type="text"
+        value={searchQuery}
+        onChange={onSearchContact}
+      />
+    </div>
   );
 };
 
 SearchBox.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
   onSearchContact: PropTypes.func.isRequired,
 };
 
