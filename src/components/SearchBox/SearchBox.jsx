@@ -1,7 +1,8 @@
 import { Formik, Form, Field } from "formik";
+import PropTypes from "prop-types";
 import styles from "./SearchBox.module.css";
 
-const SearchBox = () => {
+const SearchBox = ({ onSearchContact }) => {
   return (
     <Formik initialValues={{}} onSubmit={() => {}}>
       <Form className={styles["form-class"]}>
@@ -10,10 +11,15 @@ const SearchBox = () => {
           className={styles["field-class-name"]}
           type="text"
           name="username"
+          onChange={onSearchContact}
         />
       </Form>
     </Formik>
   );
+};
+
+SearchBox.propTypes = {
+  onSearchContact: PropTypes.func.isRequired,
 };
 
 export default SearchBox;

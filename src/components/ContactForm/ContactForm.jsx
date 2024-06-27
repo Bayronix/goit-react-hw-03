@@ -11,7 +11,7 @@ const FeedbackSchema = Yup.object().shape({
     .required("Required"),
 
   number: Yup.string()
-    .matches(/^[0-9]+$/, "Must be a valid number")
+    .matches(/^[0-9+-]+$/, "Must be a valid number")
     .min(10, "Too short")
     .max(15, "Too long")
     .required("Required"),

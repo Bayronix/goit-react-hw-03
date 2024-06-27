@@ -1,0 +1,48 @@
+.contact-container {
+  max-width: 300px;
+
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-name {
+  font-weight: bold;
+}
+
+.contact-number {
+  margin-left: 10px;
+  color: #555;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #0056b3;
+}

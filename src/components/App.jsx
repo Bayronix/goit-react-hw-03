@@ -1,31 +1,48 @@
 import SearchBox from "./SearchBox/SearchBox";
-import ContactList from "./ContactList/ContactList";
 import ContactForm from "./ContactForm/ContactForm";
-import Contact from "./Contact/Contact";
-import { useState } from "react";
-import InitialContacts from "./Contact/Contact.json";
+import ContactList from "./ContactList/ContactList";
+import { useState, useEffect } from "react";
+import InitialContacts from "./ContactList/ContactList.json";
 
 function App() {
-  const [contacts, setContacts] = useState(InitialContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem("contacts");
+    return savedContacts ? JSON.parse(savedContacts) : InitialContacts;
+  });
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleAddContact = (formData) => {
     setContacts([...contacts, formData]);
     console.log(...contacts, formData);
   };
 
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
   const handleDeleteContact = (index) => {
     const updatedContacts = contacts.filter((contact, i) => i !== index);
     setContacts(updatedContacts);
   };
 
+  const handleSearchContact = (event) => {
+    const searchValue = event.target.value.toLowerCase();
+    setSearchQuery(searchValue);
+  };
+
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(searchQuery)
+  );
+
   return (
     <div>
       <h1>Phonebook</h1>
-
       <ContactForm onAddContact={handleAddContact} />
-      <SearchBox />
-      <ContactList />
-      <Contact contacts={contacts} onDeleteContact={handleDeleteContact} />
+      <SearchBox onSearchContact={handleSearchContact} />
+      <ContactList
+        contacts={filteredContacts}
+        onDeleteContact={handleDeleteContact}
+      />
     </div>
   );
 }
